@@ -9,6 +9,9 @@ use Illuminate\Support\Facades\Http;
 
 class MovieIndex extends Component
 {
+    
+    public $title='';
+    
     use WithPagination;
     protected $key='0bcb7207a6b62c70d6e4b2c15e63bc0b';
     public $movieTMDBId;
@@ -20,6 +23,13 @@ class MovieIndex extends Component
         $this->showTagModal=true;
     }
 
+    public function save(){
+        Movie::create([
+            
+            'title'=>$this->title
+        ]);
+    }
+
     public function generateMovie(){
        $newMovie= Http::get('https://api.themoviedb.org/3/account/21332248/favorite/movies')
         ->json();
@@ -29,9 +39,13 @@ class MovieIndex extends Component
             'poster_path' =>$newMovie['poster_path'],
         ]);
     }
+
+    public function delete($movieId){
+        Movie::find($movieId)->delete();
+    }
     public function render()
     {
         return view('livewire.movie-index',
-    ['movies' => Movie::paginate(5),]);
+    ['movies' => Movie::all()]);
     }
 }
