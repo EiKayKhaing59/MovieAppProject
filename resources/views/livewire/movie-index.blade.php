@@ -1,6 +1,5 @@
 <!doctype html>
 <html>
-
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,10 +10,24 @@
 <body>
 
   <!-- component -->
-
-  <section class="container mx-auto p-6 font-mono">
+  
+  <section class=" container mx-auto p-6 font-mono">
+    
     <div class="w-full flex mb-4 p-2 justify-end">
-      <x-button wire:click="showCreateModal">Create Movie</x-button>
+      <form class="flex space-x-4 shadow bg-white rounded-md m-2 p-2" action="">
+        <div class="p-1 flex items-center">
+          <div class="col-span-4 sm:col-span-2">
+            <label for="first-name" class="block text-sm font-medium text-gray-700 mr-4" >Movie TMDB ID</label>
+            <div class="relative rounded-md shadow-sm">
+            <input wire:model="movieTMDBId" type="text" autocomplete="given-name" class="mt-1 focus:ring-indigo-500 focus:border-indigo-500 block w-full 
+            shadow-sm sm:text-sm border-gray-300">
+            </div>
+            
+          </div>
+        </div>
+      </form>
+      <button wire:click="generateMovie" type="button" class="inline-flex items-center w-36 h-24 justify-center py-2 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out disabled:opacity-50">Generate Movie</button>
+       
     </div>
 
     <div class="w-full mb-8 overflow-hidden rounded-lg shadow-lg">
@@ -30,6 +43,9 @@
               <th class="px-4 py-3">Release-Date</th>
               <th class="px-4 py-3">Last Update</th>
               <th class="px-4 py-3">Manage</th>
+              <th class="px-4 py-3">
+                Detail
+              </th>
             </tr>
           </thead>
           <tbody class="bg-white">
@@ -40,52 +56,40 @@
                   <p class="font-semibold text-black">{{$movie->title}}</p>
                 </div>
               </td>
-              <td class="px-4 py-3 text-ms font-semibold border">22</td>
+              <td class="px-4 py-3 text-ms font-semibold border">{{$movie->overview}}</td>
               <td class="px-4 py-3 text-xs border">
-                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> 2 hour
+                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {{$movie->runtime}}
                 </span>
               </td>
-              <td class="px-4 py-3 text-sm border"></td>
+              <td class="px-4 py-3 text-sm border">
+                <img class="w-14 h-14 rounded" src="https://image.tmdb.org/t/p/original/{{$movie->poster_path}}" alt="">
+              </td>
               <td class="px-4 py-3 border text-sm">{{$movie->release_date}}</td>
-              <td class="px-4 py-3 border text-sm">2.3.2022</td>
+              <td class="px-4 py-3 border text-sm">{{$movie->last_updated_at}}</td>
               <td class="px-4 py-3 border text-sm">
-                <button type="button" wire:click="delete({{$movie->id}})" wire:confirm="Are you sure you want to delete it?">Delete</button>
+                <div class="flex">
+                <button class="bg-green-500 py-1 w-16 rounded mr-px hover:bg-green-700" type="button" wire:click="showeditModal({{$movie->id}})">Edit</button>
+                <button class="bg-red-500 py-1 w-16 rounded hover:bg-green-700" type="button" wire:click="delete({{$movie->id}})" wire:confirm="Are you sure you want to delete it?">Delete</button>
+                </div>
+              
+              </td>
+              <td class="px-4 py-3 border text-sm">
+               <button wire:click="detail">Detail</button>
               </td>
             </tr>
             @endforeach
 
           </tbody>
-
+        
         </table>
+        <div class="m-2 p-2">
+          {{$movies->links()}}
+        </div>
       </div>
     </div>
-    <x-dialog-modal wire:model="showTagModal">
-      <x-slot name="title">
-        {{ __('Adding Item') }}
-      </x-slot>
-
-      <x-slot name="content">
-        {{ __('Are you sure?') }}
-      </x-slot>
-
-      <x-slot name="footer">
-        {{ __('Are you sure?') }}
-      </x-slot>
-    </x-dialog-modal>
+   
     <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-    <form wire:submit="save" class="space-y-6">
-      <div>
-        <label for="email" class="block text-sm font-medium leading-6 text-gray-900">Title</label>
-        <div class="mt-2">
-          <input wire:model="title" type="text" autocomplete="name" required
-            class="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
-        </div>
-
-      </div>
-      <x-secondary-button type="submit">Save</x-secondary-button>
-      <x-button wire:click="generateMovie" class="bg-gray-600 hover:bg-gray-800 text-white">Generate Movie</x-button>
-    </form>
-  </div>
+   
   </section>
   
   @livewireScripts

@@ -31,6 +31,7 @@
   <body class="h-full">
   ```
 -->
+
   <div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
     <form wire:submit="save" class="space-y-6">
       <div>
@@ -41,8 +42,7 @@
         </div>
 
       </div>
-      <x-secondary-button type="submit">Save</x-secondary-button>
-      <x-button wire:click="generateMovie" class="bg-gray-600 hover:bg-gray-800 text-white">Generate Movie</x-button>
+      
     </form>
   </div>
 

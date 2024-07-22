@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('member_code');
             $table->integer('phone');
             $table->integer('password');
-            $table->time('last_active_at');
+            $table->datetime('last_active_at');
             $table->timestamps();
         });
     }

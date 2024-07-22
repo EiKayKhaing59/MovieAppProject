@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('poster_path');
             $table->date('release_date');
             $table->string('runtime');
-            $table->string('last_updated_at');
+            $table->date('last_updated_at');
             $table->timestamps();
         });
     }

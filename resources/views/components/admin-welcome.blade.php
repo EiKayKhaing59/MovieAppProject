@@ -116,4 +116,5 @@
     </p>
   </div>
 -->
+@yield('content')
 </div>

@@ -1,43 +1,40 @@
-@props(['id', 'maxWidth'])
-
-@php
-$id = $id ?? md5($attributes->wire('model'));
-
-$maxWidth = [
-    'sm' => 'sm:max-w-sm',
-    'md' => 'sm:max-w-md',
-    'lg' => 'sm:max-w-lg',
-    'xl' => 'sm:max-w-xl',
-    '2xl' => 'sm:max-w-2xl',
-][$maxWidth ?? '2xl'];
-@endphp
-
-<div
-    
-    x-on:close.stop="show = false"
-    x-on:keydown.escape.window="show = false"
+<div 
+    x-data="{show:false}"
     x-show="show"
-    id="{{ $id }}"
-    class="jetstream-modal fixed inset-0 overflow-y-auto px-4 py-6 sm:px-0 z-50"
-    style="display: none;"
->
-    <div x-show="show" class="fixed inset-0 transform transition-all" x-on:click="show = false" x-transition:enter="ease-out duration-300"
-                    x-transition:enter-start="opacity-0"
-                    x-transition:enter-end="opacity-100"
-                    x-transition:leave="ease-in duration-200"
-                    x-transition:leave-start="opacity-100"
-                    x-transition:leave-end="opacity-0">
-        <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
-    </div>
+    x-on:open-modal.window="show=true"
+    x-on:close-modal.window="show=false"
+    x-on:keydown.escape.window="show=false"
+class="fixed inset-0 z-50 ">
 
-    <div x-show="show" class="mb-6 bg-white rounded-lg overflow-hidden shadow-xl transform transition-all sm:w-full {{ $maxWidth }} sm:mx-auto"
-                    x-trap.inert.noscroll="show"
-                    x-transition:enter="ease-out duration-300"
-                    x-transition:enter-start="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    x-transition:enter-end="opacity-100 translate-y-0 sm:scale-100"
-                    x-transition:leave="ease-in duration-200"
-                    x-transition:leave-start="opacity-100 translate-y-0 sm:scale-100"
-                    x-transition:leave-end="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95">
-        {{ $slot }}
+<div class="bg-white rounded-lg m-auto fixed inset-0 text-black max-w-96" opacity-40 style="max-height:300px ;">
+<div class="containermx-auto max-w-xl p-6">
+    <!-- Coupon Code Card Form -->
+    <div class="bg-white text-black  p-6 rounded-lg shadow-lg">
+
+        <h1 class="text-2xl font-semibold mb-4">Choose Seat</h1>
+
+        <!-- Coupon Code Input -->
+        <div class="mb-4">
+            <label for="coupon" class="block text-white font-semibold mb-2">Seats:</label>
+            <input type="text" id="coupon" name="coupon" class="w-full px-4 py-2 border  border-gray-300 rounded-lg focus:ring focus:ring-blue-500 focus:border-blue-500" placeholder="How many seats do you want?">
+        </div>
+
+        <!-- Apply Button -->
+        <div class="text-center">
+            <button wire:click="Seating" class="h-10 px-6 font-semibold rounded-md bg-green-500 text-white hover:bg-red-300">
+                    Confirm Seat
+                </button>
+                <button x-on:click="$dispatch('close-modal')" class="h-10 px-6 font-semibold rounded-md bg-red-600 text-white hover:bg-red-300">
+                    Close
+                </button>
+        </div>
+
+        <!-- Coupon Code Result -->
+        <div class="mt-4 text-green-500">
+            Seat choose sucessfully.
+        </div>
     </div>
+</div>
+</div>
+</div>
 </div>

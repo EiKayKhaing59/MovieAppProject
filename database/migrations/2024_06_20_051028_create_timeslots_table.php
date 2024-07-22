@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('timeslots', function (Blueprint $table) {
             $table->id();
-            $table->date('day');
+            $table->string('day');
             $table->time('start_time');
             $table->timestamps();
         });
