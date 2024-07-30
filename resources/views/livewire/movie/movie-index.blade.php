@@ -26,7 +26,7 @@
           </div>
         </div>
       </form>
-      <button wire:click="generateMovie" type="button" class="inline-flex items-center w-36 h-24 justify-center py-2 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out disabled:opacity-50">Update Movie</button>
+      <button wire:click="generateMovie" type="button" class="inline-flex items-center w-36 h-24 justify-center py-2 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-800 hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out disabled:opacity-50">Update Movie</button>
        
     </div>
 
@@ -58,7 +58,7 @@
               </td>
               <td class="px-4 py-3 text-ms font-semibold border">{{$movie->overview}}</td>
               <td class="px-4 py-3 text-xs border">
-                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {{$movie->runtime}}
+                <span class="px-2 py-1 font-semibold leading-tight text-green-700 bg-green-100 rounded-sm"> {{$movie->runtime}} min
                 </span>
               </td>
               <td class="px-4 py-3 text-sm border">
@@ -74,7 +74,7 @@
               
               </td>
               <td class="px-4 py-3 border text-sm">
-               <button wire:click="detail({{$movie->id}})">Detail</button>
+               <button wire:click="detail({{$movie->id}})" class="bg-blue-500 text-white py-2 px-2 rounded hover:bg-blue-700">Detail</button>
               </td>
             </tr>
             @endforeach

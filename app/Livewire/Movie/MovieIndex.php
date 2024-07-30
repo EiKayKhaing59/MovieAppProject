@@ -34,8 +34,7 @@ class MovieIndex extends Component
     ];
     public function detail($movieId)
     {
-        
-        return redirect()->to('/admin/moviedetail');
+        return redirect()->route('admin.movie.detailpage',['id'=>$movieId]);
     }
     public function generateMovie()
     {
@@ -59,7 +58,7 @@ class MovieIndex extends Component
         } else {
         }
     }
-
+    
     public function updateMovie(){
         $this->movie->update([
             'title'=>$this->title,
