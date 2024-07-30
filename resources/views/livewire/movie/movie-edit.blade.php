@@ -1,4 +1,4 @@
-<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm border-solid border-2 border-gray-600 rounded px-2">
+<div class="mt-10 sm:mx-auto sm:w-full sm:max-w-sm  rounded px-2">
 <h1 class="py-2 text-2xl font-semibold">Edit Movie</h1>
     <form class="" wire:submit.prevent="save">
         <div class="form-group">

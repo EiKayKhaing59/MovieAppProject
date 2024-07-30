@@ -12,13 +12,10 @@
 
   <!-- component -->
   <section class=" container mx-auto p-6 font-mono ">
-
-
-
     <div class="w-full flex mb-4 p-2 justify-end">
 
       <button wire:click="showCreateTime" type="button"
-      class="text-white  bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 items-center">Create
+        class="text-white  bg-gray-800 hover:bg-gray-900 focus:outline-none focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-gray-800 dark:hover:bg-gray-700 dark:focus:ring-gray-700 dark:border-gray-700 items-center">Create
         Timeslots</button>
 
     </div>
@@ -48,11 +45,12 @@
           {{$timeslot->start_time}}
           </td>
           <td class="px-4 py-3 text-xs border border-slate-300 ">
-          <a class="bg-green-500 text-white px-2 py-2 w-16 rounded hover:bg-green-700" href="{{route('admin.times.edit',$timeslot->id)}}">Edit</a>
+          <a class="bg-green-500 text-white px-2 py-2 w-16 rounded hover:bg-green-700"
+            href="{{route('admin.times.edit', $timeslot->id)}}">Edit</a>
           <button class="bg-red-500 text-white px-2 py-2 w-16 rounded hover:bg-red-700" type="button"
             wire:click="delete({{$timeslot->id}})"
             wire:confirm="Are you sure you want to delete it?">Delete</button>
-          
+
           </td>
         </tr>
       @endforeach
@@ -64,10 +62,8 @@
 
     </div>
 
-    
+
   </section>
-
-
 
   @livewireScripts
 </body>
