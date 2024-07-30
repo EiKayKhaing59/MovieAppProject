@@ -15,7 +15,7 @@
 <body>
 <section class="relative py-16 bg-blueGray-50">
 
-<div class="w-full  bg-slate-900">
+<div class="w-full  bg-slate-900 rounded-3xl">
     <div class="text-center text-red-500 font-semibold text-3xl hover:text-red-300">
         Choose Your Seats!
     </div>

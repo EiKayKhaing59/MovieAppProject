@@ -14,8 +14,8 @@
   Link : https://dribbble.com/shots/10452538-React-UI-Components
 -->
 
-    <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
-      <div class="relative py-3 sm:max-w-xl sm:mx-auto">
+    <div class="min-h-screen  py-6 flex flex-col justify-center sm:py-12">
+      <div class="relative py-3 w-1/2 sm:mx-auto">
         <div class="relative px-4 py-10 bg-white mx-8 md:mx-0 shadow rounded-3xl sm:p-10">
           <div class="max-w-md  mx-auto">
             <div class="flex items-center space-x-5">
@@ -39,18 +39,22 @@
               <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
                 <div class="flex flex-col">
                   <label class="leading-loose font-medium">Member Code</label>
+                  <select class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-base border-gray-300 rounded-md focus:outline-none text-gray-900" id="customer_id" wire:model="customer_id">
+                      <option value="">Select member</option>
+                      @foreach ($customers as $customer)
+                          <option value="{{$customer->id}}">{{$customer->member_code}}</option>
+                      @endforeach
+                  </select>
                   
-                  <input type="text"
-                    class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                    wire:model="customer_id"
-                    placeholder="">
                 </div>
                 <div class="flex flex-col">
                   <label class="leading-loose font-medium">Movie</label>
-                  <input type="text"
-                    class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                    wire:model="movie_id"
-                    placeholder="">
+                  <select class="px-4 py-2 border focus:ring-gray-900 focus:border-gray-900 w-full sm:text-base border-gray-300 rounded-md focus:outline-none text-gray-900" id="movie_id" wire:model="movie_id">
+                      <option value="">Select Movie</option>
+                      @foreach ($movies as $movie)
+                          <option value="{{$movie->id}}">{{$movie->title}}</option>
+                      @endforeach
+                  </select>
                 </div>
                 <div class="flex items-center space-x-4">
                   <div class="flex flex-col">
@@ -66,13 +70,15 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex flex-col w-1/2">
+                  <div class="flex flex-col w-2/3">
                     <label class="leading-loose font-medium">Show Time</label>
                     <div class="relative focus-within:text-gray-600 text-gray-400">
-                    <input type="text"
-                    class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-sm border-gray-300 rounded-md focus:outline-none text-gray-600"
-                    wire:model="timeslot_id"
-                    placeholder="">
+                    <select class="px-4 py-2 border focus:ring-gray-500 focus:border-gray-900 w-full sm:text-base border-gray-300 rounded-md focus:outline-none text-gray-900" id="timeslot_id" wire:model="timeslot_id">
+                      <option value="">Select Time</option>
+                      @foreach ($timeslots as $timeslot)
+                          <option value="{{$timeslot->id}}">{{$timeslot->start_time}}</option>
+                      @endforeach
+                  </select>
                       <div class="absolute left-3 top-2">
                           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z">
@@ -104,7 +110,7 @@
         </div>
       </div>
     </div>
-    
+     
   </div>
 
 </body>

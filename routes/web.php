@@ -1,44 +1,40 @@
 <?php
 
 use App\Http\Controllers\AdminController;
-use App\Livewire\Booking;
+use App\Livewire\Booking\Index;
 use App\Livewire\BookingDetail;
-use App\Livewire\BookingIndex;
-use App\Livewire\Counter;
-use App\Livewire\CreateTime;
-use App\Livewire\MovieComponent;
-use App\Livewire\MovieDetail;
-use App\Livewire\SeatingPlan;
 use App\Livewire\Showtimes;
-use App\Livewire\Tickets;
+use App\Livewire\Time\TimeEdit;
 use Illuminate\Support\Facades\Route;
-use App\Livewire\MovieIndex;
-use App\Livewire\CustomerIndex;
-use App\Livewire\CreateCustomer;
-use App\Livewire\TimeIndex;
 use App\Livewire\Showtime\Create;
 use App\Livewire\SeatingPlan\Show;
-Route::get('/counter',Counter::class);
- Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
-Route::get('/', [AdminController::class, 'index'])->name('index');
-Route::get('movies', MovieIndex::class)->name('movies.index');
-  Route::get('customers', CustomerIndex::class)->name('customers.index');
-  Route::get('user',CreateCustomer::class)->name('user');
-  Route::get('details', MovieDetail::class)->name('movie-details.index');
-  Route::get('time',TimeIndex::class)->name('times.index');
-  Route::get('booking',Booking::class)->name('booking.index');
-  Route::get('booking-detail',BookingDetail::class)->name('booking.detail.index');
-  Route::get('create-time',CreateTime::class)->name('create-time.index');
-  Route::get('tickets',Tickets::class)->name('tickets.index');
-  Route::get('showtimes',Showtimes::class)->name('showtimes.index');
-  Route::get('booking-index',BookingIndex::class)->name('booking-index');
-  Route::get('show-index',Create::class)->name('show-time.index');
-  Route::get('showtimedisplay-index',Show::class)->name('showtime-display.index');
- });
-
-
-// Route::get('user',CreateCustomer::class)->name('user');
- 
+use App\Livewire\Movie\MovieIndex;
+use App\Livewire\Movie\Moviedetail;
+use App\Livewire\Customer\CustomerIndex;
+use App\Livewire\Customer\CreateCustomer;
+use App\Livewire\Customer\CustomerEdit;
+use App\Livewire\Time\TimeIndex;
+use App\Livewire\Time\CreateTime;
+use App\Livewire\Booking\BookingIndex;
+use App\Livewire\Booking\BookingCreate;
+use App\Livewire\Movie\MovieEdit;
+Route::middleware(['auth:sanctum', 'verified', 'role:admin'])->prefix('admin')->name('admin.')->group(function () {
+    Route::get('/', [AdminController::class, 'index'])->name('index');
+    Route::get('movieindex', MovieIndex::class)->name('movieindexs');
+    Route::get('moviedetail', Moviedetail::class)->name('moviedetails');
+    Route::get('customers', CustomerIndex::class)->name('customers.index');
+    Route::get('create-customer',CreateCustomer ::class)->name('user');
+    Route::get('time', TimeIndex::class)->name('times.index');
+    Route::get('create-times', CreateTime::class)->name('create-time.index');
+    Route::get('booking-create', BookingCreate::class)->name('tickets.index');
+    Route::get('booking-index',BookingIndex ::class)->name('booking-index');
+    Route::get('showtime-create', Create::class)->name('show-time.index');
+    Route::get('showtimedisplay-index', Show::class)->name('showtime-display.index');
+    Route::get('edit/{movieId}/edit', MovieEdit::class)->name('movie.edit');
+    Route::get('indexs', Index::class)->name('indexs');
+    Route::get('customers/{customerId}/edit', CustomerEdit::class)->name('customers.edit');
+    Route::get('times/{timeslotId}/edit',TimeEdit::class)->name('times.edit');
+});
 Route::get('/', function () {
     return view('welcome');
 });

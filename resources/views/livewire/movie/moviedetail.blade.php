@@ -35,16 +35,18 @@
             <div>
               Country: USA
             </div>
+            <div>
+              <button wire:click="video" class="bg-black my-2 text-white rounded-md py-2 px-6">
+                Trailer
+              </button>
+            </div>
           </div>
         </div>
-        <div class="m-10">
+        
+        <div class="m-2 ">
           {{$movie->overview}}
         </div>
-        <video className="h-48-48 rounded-lg" controls autoPlay muted>
-          <source src="
-https://api.themoviedb.org/3/movie/{{$movie->video}}/videos" type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
+        
       </tbody>
     </table>
   </div>

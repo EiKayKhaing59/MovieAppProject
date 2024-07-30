@@ -15,7 +15,7 @@ class BookingIndex extends Component
         return redirect()->to('/admin/customers');
     }
     public function create(){
-        return redirect()->to('/admin/tickets');
+        return redirect()->to('/admin/showtimedisplay-index');
     }
      
     public function resetInputField(){
@@ -41,7 +41,10 @@ class BookingIndex extends Component
             'total_price'=>$this->total_price,
         ]);
     }
-
+    public function delete($bookingId)
+    {
+        Ticket::find($bookingId)->delete();
+    }
     public function render()
     {
         $this->bookings= Ticket::with('customer','movie','timeslot')->get();

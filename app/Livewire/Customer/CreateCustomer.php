@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Livewire;
+namespace App\Livewire\Customer;
 
 use Livewire\Component;
-use App\Livewire\CustomerIndex;
 use App\Models\Customers;
+
 
 class CreateCustomer extends Component
 {
@@ -24,8 +24,7 @@ class CreateCustomer extends Component
     }
     public function render()
     {
-        return view('livewire.create-customer',
-        ['customers' => Customers::paginate(5),]
-    );
+        return view('livewire.customer.create-customer',
+        ['customers' => Customers::paginate(5),]);
     }
 }

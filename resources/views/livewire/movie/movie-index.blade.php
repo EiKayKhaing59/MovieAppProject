@@ -26,7 +26,7 @@
           </div>
         </div>
       </form>
-      <button wire:click="generateMovie" type="button" class="inline-flex items-center w-36 h-24 justify-center py-2 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out disabled:opacity-50">Generate Movie</button>
+      <button wire:click="generateMovie" type="button" class="inline-flex items-center w-36 h-24 justify-center py-2 px-4 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-gray-700 hover:bg-gray-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-green-700 transition duration-150 ease-in-out disabled:opacity-50">Update Movie</button>
        
     </div>
 
@@ -68,13 +68,13 @@
               <td class="px-4 py-3 border text-sm">{{$movie->last_updated_at}}</td>
               <td class="px-4 py-3 border text-sm">
                 <div class="flex">
-                <button class="bg-green-500 py-1 w-16 rounded mr-px hover:bg-green-700" type="button" wire:click="showeditModal({{$movie->id}})">Edit</button>
-                <button class="bg-red-500 py-1 w-16 rounded hover:bg-green-700" type="button" wire:click="delete({{$movie->id}})" wire:confirm="Are you sure you want to delete it?">Delete</button>
+                <a href="{{route('admin.movie.edit',$movie->id)}}" class="bg-green-500 text-white px-2 py-2 mx-1 w-16 rounded hover:bg-green-700 text-center">Edit</a>
+                <button class="bg-red-500 text-white px-2 py-2 w-16 rounded hover:bg-red-700" type="button" wire:click="delete({{$movie->id}})" wire:confirm="Are you sure you want to delete it?">Delete</button>
                 </div>
               
               </td>
               <td class="px-4 py-3 border text-sm">
-               <button wire:click="detail">Detail</button>
+               <button wire:click="detail({{$movie->id}})">Detail</button>
               </td>
             </tr>
             @endforeach

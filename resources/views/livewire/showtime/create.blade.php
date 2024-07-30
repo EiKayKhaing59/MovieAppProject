@@ -16,17 +16,24 @@
             <label class="block text-gray-700 font-bold mb-2" for="email">
                Movie
             </label>
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                 type="text" wire:model="movie_id" >
+            <select class="px-4 py-2 border focus:ring-gray-900 focus:border-gray-900 w-full sm:text-base border-gray-300 rounded-md focus:outline-none text-gray-900" id="movie_id" wire:model="movie_id">
+                      <option value="">Select Movie</option>
+                      @foreach ($movies as $movie)
+                          <option value="{{$movie->id}}">{{$movie->title}}</option>
+                      @endforeach
+                  </select>
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="phone">
                 Time
             </label>
-            <input
-                class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
-                type="text" wire:model="timeslot_id">
+            <select class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="timeslot_id" wire:model="timeslot_id">
+                      <option value="">Select Time</option>
+                      @foreach ($timeslots as $timeslot)
+                          <option value="{{$timeslot->id}}">{{$timeslot->start_time}}</option>
+                      @endforeach
+                  </select>
+           
         </div>
         <div class="mb-4">
             <label class="block text-gray-700 font-bold mb-2" for="date">

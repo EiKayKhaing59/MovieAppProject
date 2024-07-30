@@ -18,7 +18,7 @@ class TimeIndex extends Component
     public function render()
     {
         return view('livewire.time-index',
-        ['timeslots' => Timeslots::paginate(9),]);
+        ['timeslots' => Timeslots::paginate(20),]);
     }
 
     

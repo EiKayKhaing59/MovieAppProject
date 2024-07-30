@@ -28,13 +28,13 @@
         <table class="w-full  border border-slate-900">
           <thead>
             <tr
-              class="text-md font-semibold tracking-wide text-left uppercase border-b border-gray-600">
+              class="text-md font-semibold tracking-wide text-left uppercase bg-gray-300 border-b border-gray-600">
               <th class="px-4 py-3 border border-slate-700">Date</th>
               <th class="px-4 py-3 border border-slate-700">Timetable</th>
               <th class="px-4 py-3 border border-slate-700">Manage</th>
             </tr>
           </thead>
-          <tbody class="">
+          <tbody class="bg-white">
             @foreach ($timeslots as $timeslot)
         <tr class="text-gray-700">
           <td class="px-4 py-3  border border-slate-400">

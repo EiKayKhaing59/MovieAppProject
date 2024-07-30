@@ -13,6 +13,6 @@ class Booking extends Component
     public function render()
     {
         return view('livewire.booking',
-        ['movies' => Movie::paginate(20),]);
+        ['movies' => Movie::paginate(100),]);
     }
 }
